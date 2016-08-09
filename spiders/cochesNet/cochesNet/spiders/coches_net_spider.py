@@ -14,11 +14,14 @@ class CochesNetSpider(scrapy.Spider):
         for href in response.xpath('//a[@class="mt-CardAd-link"]/@href').extract():
             url = response.urljoin(href)
             yield scrapy.Request(url, callback=self.parse_car)
+        for href in response.xpath('//a[@class="mt-Pagination-link mt-Pagination-link--next "]/@href').extract():
+            url = response.urljoin(href)
+            yield scrapy.Request(url, callback=self.parse)
 
     def parse_car(self, response):
+        car = Car()
         for js_script in response.xpath('//script[@type="text/javascript"]/text()').extract():
             if ' var' == js_script[:4]:
-                car = Car()
                 for line in js_script.split(';'):
                     line = line.split('=')
                     if line[0] == ' utag_data.brand':
@@ -28,11 +31,39 @@ class CochesNetSpider(scrapy.Spider):
                     if line[0] == ' utag_data.version':
                         car['version'] = line[1][1:-1]
                     if line[0] == ' utag_data.year':
-                        car['from_year'] = line[1][1:-1]
+                        car['year'] = line[1][1:-1]
                     if line[0] == ' utag_data.km':
                         car['km'] = line[1][1:-1]
                     if line[0] == ' utag_data.region_level2':
-                        car['from_location'] = line[1][1:-1]
+                        car['region_level2'] = line[1][1:-1]
                     if line[0] == ' utag_data.price':
                         car['price'] = line[1][1:-1]
-                yield car
+                    if line[0] == ' utag_data.category_level1':
+                        car['category_level1'] = line[1][1:-1]
+                    if line[0] == ' utag_data.category_level2':
+                        car['category_level2'] = line[1][1:-1]
+                    if line[0] == ' utag_data.category_level3':
+                        car['category_level3'] = line[1][1:-1]
+                    if line[0] == ' utag_data.warranty':
+                        car['warranty'] = line[1][1:-1]
+                    if line[0] == ' utag_data.car_body':
+                        car['car_body'] = line[1][1:-1]
+                    if line[0] == ' utag_data.fuel':
+                        car['fuel'] = line[1][1:-1]
+                    if line[0] == ' utag_data.transmission':
+                        car['transmission'] = line[1][1:-1]
+                    if line[0] == ' utag_data.power':
+                        car['power'] = line[1][1:-1]
+                    if line[0] == ' utag_data.creation_date':
+                        car['creation_date'] = line[1][1:-1]
+                    if line[0] == ' utag_data.color':
+                        car['color'] = line[1][1:-1]
+                    if line[0] == ' utag_data.num_car_doors':
+                        car['num_car_doors'] = line[1][1:-1]
+                    if line[0] == ' utag_data.company':
+                        car['company'] = line[1][1:-1]
+
+        for description in response.xpath('//meta[@property="og:description"]/@content').extract():
+            car['description'] = description
+
+        yield car
