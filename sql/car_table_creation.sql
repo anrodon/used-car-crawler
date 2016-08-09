@@ -1,4 +1,4 @@
-CREATE TABLE public.car
+CREATE TABLE cars
 (
   price double precision,
   brand character varying(20),
@@ -11,7 +11,7 @@ CREATE TABLE public.car
   category_level1 character(20),
   category_level2 character(20),
   category_level3 character(20),
-  warranty real,
+  warranty double precision,
   car_body character(20),
   fuel character(10),
   transmission character(15),
@@ -19,7 +19,7 @@ CREATE TABLE public.car
   creation_date date,
   color character(20),
   num_car_doors integer,
-  company character(20),
+  company character(50),
   description character(1000),
   CONSTRAINT car_pkey PRIMARY KEY (id)
 );

@@ -54,13 +54,13 @@ class CochesNetSpider(scrapy.Spider):
                         car['transmission'] = line[1][1:-1]
                     if line[0] == ' utag_data.power':
                         car['power'] = line[1][1:-1]
-                    if line[0] == ' utag_data.creation_date':
+                    if line[0] == ' utag_data.creation_date  ':
                         car['creation_date'] = line[1][1:-1]
-                    if line[0] == ' utag_data.color':
+                    if line[0] == ' utag_data.color   ':
                         car['color'] = line[1][1:-1]
-                    if line[0] == ' utag_data.num_car_doors':
+                    if line[0] == ' utag_data.num_car_doors      ':
                         car['num_car_doors'] = line[1][1:-1]
-                    if line[0] == ' utag_data.company':
+                    if line[0] == ' utag_data.company ':
                         car['company'] = line[1][1:-1]
 
         for description in response.xpath('//meta[@property="og:description"]/@content').extract():
