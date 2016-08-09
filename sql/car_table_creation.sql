@@ -7,7 +7,7 @@ CREATE TABLE cars
   km integer,
   region_level2 character varying(20),
   version character varying(50),
-  id integer NOT NULL DEFAULT nextval('car_id_seq'::regclass),
+  id serial,
   category_level1 character(20),
   category_level2 character(20),
   category_level3 character(20),
@@ -21,5 +21,5 @@ CREATE TABLE cars
   num_car_doors integer,
   company character(50),
   description character(1000),
-  CONSTRAINT car_pkey PRIMARY KEY (id)
+  PRIMARY KEY (brand, model, description)
 );
