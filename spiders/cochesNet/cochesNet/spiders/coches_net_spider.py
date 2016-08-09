@@ -7,7 +7,16 @@ class CochesNetSpider(scrapy.Spider):
     name = "coches_net"
     allowed_domains = ["coches.net"]
     start_urls = [
-        "http://www.coches.net/ocasion/"
+        "http://www.coches.net/ocasion/",
+        "http://www.coches.net/ocasion/?or=1&fi=Price",
+        "http://www.coches.net/ocasion/?fi=Price",
+        "http://www.coches.net/ocasion/?or=1&fi=Kilometers",
+        "http://www.coches.net/ocasion/?fi=Kilometers",
+        "http://www.coches.net/ocasion/?fi=Year",
+        "http://www.coches.net/ocasion/?or=1&fi=Year",
+        "http://www.coches.net/ocasion/?or=1&fi=oTitle",
+        "http://www.coches.net/ocasion/?fi=oTitle",
+        "http://www.coches.net/ocasion/?or=1"
     ]
 
     def parse(self, response):
