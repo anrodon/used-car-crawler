@@ -1,0 +1,25 @@
+CREATE TABLE public.car
+(
+  price double precision,
+  brand character varying(20),
+  model character varying(20),
+  year integer,
+  km integer,
+  region_level2 character varying(20),
+  version character varying(50),
+  id integer NOT NULL DEFAULT nextval('car_id_seq'::regclass),
+  category_level1 character(20),
+  category_level2 character(20),
+  category_level3 character(20),
+  warranty real,
+  car_body character(20),
+  fuel character(10),
+  transmission character(15),
+  power character(10),
+  creation_date date,
+  color character(20),
+  num_car_doors integer,
+  company character(20),
+  description character(1000),
+  CONSTRAINT car_pkey PRIMARY KEY (id)
+);
