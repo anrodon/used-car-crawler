@@ -1,1 +1,0 @@
-# Scrapy Used Car Spiders

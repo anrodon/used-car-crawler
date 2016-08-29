@@ -12,7 +12,7 @@ from datetime import datetime
 
 class CochesNetPipeline(object):
     def process_item(self, item, spider):
-        db = CarDB('localhost', 'car-spiders', 'andreu', 'andreu')
+        db = CarDB('host', 'dbname', 'user', 'password')
         cursor = db.cursor()
         cursor.execute("INSERT INTO cars (price, brand, model, year, km, region_level2, version, category_level1, category_level2, category_level3, warranty, car_body, fuel, transmission, power, creation_date, color, num_car_doors, company, description) VALUES " +
                        "({0}, '{1}', '{2}', {3}, {4}, '{5}', '{6}', '{7}', '{8}', '{9}', {10}, '{11}', '{12}', '{13}', '{14}', '{15}', '{16}', {17}, '{18}', '{19}')".format(
