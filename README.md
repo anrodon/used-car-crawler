@@ -24,7 +24,7 @@ To start crawling [coches.net](https://www.coches.net) you only have to do 4 thi
 You can do that by typyng:
 
 ````
-
+git clone https://github.com/anrodon/used-car-crawler.git
 ````
 
 ### 2. Create the PostgreSQL table
