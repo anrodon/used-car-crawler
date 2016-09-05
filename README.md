@@ -1,5 +1,4 @@
-![Python 2.7](https://img.shields.io/badge/python-2.7-blue.svg)
-![License](https://img.shields.io/github/license/mashape/apistatus.svg)
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://anrodon.mit-license.org)
 # Used Car Crawler
 
 A Python Scrapy used car crawler
